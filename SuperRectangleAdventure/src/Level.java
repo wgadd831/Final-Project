@@ -2,6 +2,9 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.util.ArrayList;
 
+/**
+ *The level that the player must navigate through
+*/
 public class Level {
 	
 	private ArrayList<Shape> obstacles;

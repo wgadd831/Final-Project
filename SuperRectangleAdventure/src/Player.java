@@ -6,6 +6,9 @@ import java.util.*;
 
 import processing.core.PImage;
 
+/**
+ * The Player controlled by the user
+*/
 public class Player extends MovingImage {
 
 	
