@@ -119,7 +119,7 @@ public class DrawingSurface extends PApplet {
 		//CODE TO RANDOMIZE LEVEL
 		
 		
-		if(//(safe1.getSafe()).intersects(player)*/)
+		if((safe1.getSafe()).intersects(player))
 		{
 			if(!safe1.getIsStart())
 			{
@@ -131,7 +131,7 @@ public class DrawingSurface extends PApplet {
 			
 		}
 		
-		if(//(safe2.getSafe()).intersects(player)*/)
+		if((safe2.getSafe()).intersects(player))
 		{
 			if(!safe2.getIsStart())
 			{

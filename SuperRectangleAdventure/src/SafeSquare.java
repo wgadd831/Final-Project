@@ -1,7 +1,7 @@
+import java.awt.Rectangle;
 import java.awt.Shape;
-import java.util.ArrayList;
 
-import com.jogamp.nativewindow.util.Rectangle;
+
 
 public class SafeSquare {
 	
