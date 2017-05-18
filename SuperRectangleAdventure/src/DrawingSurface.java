@@ -14,8 +14,10 @@ public class DrawingSurface extends PApplet {
 
 	private Rectangle screenRect;
 
-	private Level level;
 	private Player player;
+	private SafeSquare safe1;
+	private SafeSquare safe2;
+	private Level level;
 	private ArrayList<Shape> obstacles;
 
 	private ArrayList<Integer> keys;
@@ -28,10 +30,11 @@ public class DrawingSurface extends PApplet {
 		keys = new ArrayList<Integer>();
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		
+		safe1 = new SafeSquare(true,true);
+		safe2 = new SafeSquare(false,false);
+		
 		//once more levels are made, input random integer
 		level = new Level(1);
-	
-		
 		obstacles = level.getLevels();
 		
 		
@@ -81,6 +84,11 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 
+		fill(250,250,0);
+		
+		rect(safe1.getX(), safe1.getY(), SafeSquare.SAFESQUARE_WIDTH, SafeSquare.SAFESQUARE_HEIGHT);
+		rect(safe2.getX(), safe2.getY(), SafeSquare.SAFESQUARE_WIDTH, SafeSquare.SAFESQUARE_HEIGHT);
+		
 		player.draw(this);
 
 		popMatrix();
@@ -99,7 +107,7 @@ public class DrawingSurface extends PApplet {
 		}
 		if (isPressed(KeyEvent.VK_DOWN))
 		{
-			//crouching
+			//crouching (why is this hard for me)
 		}
 			
 
@@ -107,6 +115,35 @@ public class DrawingSurface extends PApplet {
 
 		if (!screenRect.intersects(player))
 			spawnNewPlayer();
+		
+		//CODE TO RANDOMIZE LEVEL
+		
+		
+		if(//(safe1.getSafe()).intersects(player)*/)
+		{
+			if(!safe1.getIsStart())
+			{
+				level = new Level((int)(Math.random()*3)); 
+				obstacles = level.getLevels();
+				safe1.swap();
+				safe2.swap();
+			}
+			
+		}
+		
+		if(//(safe2.getSafe()).intersects(player)*/)
+		{
+			if(!safe2.getIsStart())
+			{
+				level = new Level((int)(Math.random()*3)); 
+				obstacles = level.getLevels();
+				safe1.swap();
+				safe2.swap();
+			}
+		}
+		
+		
+		
 	}
 
 
