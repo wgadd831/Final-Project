@@ -151,11 +151,12 @@ public class DrawingSurface extends PApplet {
 		{
 			if(!safe1.getIsStart())
 			{
-				int x = level.getLevelNumber();
-				while(x == level.getLevelNumber())
+				int x;
+				do
 				{
 					x = (int)(Math.random()*3);
-				}
+				}while(x == level.getLevelNumber());
+				
 				level = new Level(x); 
 				obstacles = level.getLevels();
 				safe1.swap();
@@ -168,7 +169,13 @@ public class DrawingSurface extends PApplet {
 		{
 			if(!safe2.getIsStart())
 			{
-				level = new Level((int)(Math.random()*3)); 
+				int x;
+				do
+				{
+					x = (int)(Math.random()*3);
+				}while(x == level.getLevelNumber());
+				
+				level = new Level(x); 
 				obstacles = level.getLevels();
 				safe1.swap();
 				safe2.swap();
