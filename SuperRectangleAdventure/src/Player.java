@@ -20,6 +20,7 @@ public class Player extends MovingImage {
 	private boolean onASurface;
 	private boolean leftSideOnWall;
 	private boolean rightSideOnWall;
+	private boolean canUncrouch;
 	private double friction;
 	private double gravity;
 	private double jumpStrength;
@@ -81,14 +82,20 @@ public class Player extends MovingImage {
 		return PLAYER_WIDTH;
 	}
 	
-	//crouching and uncrouching won't work yet
-	//need to delete current player object and spawn new in the same place?
+	/**
+	 *makes player crouch
+	 */
 	public void crouch() {
 		super.height = PLAYER_HEIGHT/2;
+		friction = .6;
 	}
 	
+	/**
+	 *makes player uncrouch
+	 */
 	public void uncrouch() {
-		
+		super.height = PLAYER_HEIGHT;
+		friction = .8;
 	}
 	
 	

@@ -43,7 +43,9 @@ public class DrawingSurface extends PApplet {
 		
 	}
 
-
+	/**
+	 * Spawns the player at whatever safe square is currently the start
+	*/
 	public void spawnNewPlayer() {
 		if(safe1.getIsStart())
 		{
@@ -128,6 +130,10 @@ public class DrawingSurface extends PApplet {
 		if (isPressed(KeyEvent.VK_DOWN))
 		{
 			player.crouch();
+		}
+		if (isPressed(KeyEvent.VK_SPACE))
+		{
+			player.uncrouch();
 		}
 		
 		

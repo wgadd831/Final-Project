@@ -2,7 +2,9 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 
 
-
+/**
+ *The squares on the left and right side of the screen that the player moves between
+*/
 public class SafeSquare {
 	
 	public static final int SAFESQUARE_HEIGHT = 100;
@@ -60,7 +62,7 @@ public class SafeSquare {
 	}
 	
 	/**
-	 *  Changed the field isStart to its opposite
+	 *  Changes the field isStart to its opposite
 	*/
 	public void swap()
 	{

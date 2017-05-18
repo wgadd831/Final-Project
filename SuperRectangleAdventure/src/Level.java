@@ -38,6 +38,10 @@ public class Level {
 		obstacles.add(new Rectangle(100,0,600,10));
 		obstacles.add(new Rectangle(100,590,600,10));
 		
+		
+		//crouch tester
+		obstacles.add(new Rectangle(500,555,50,10));
+		
 		if(x == 0)
 		{
 			obstacles.add(new Rectangle(150,350,500,10));
