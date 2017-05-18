@@ -127,29 +127,36 @@ public class DrawingSurface extends PApplet {
 		}
 		if (isPressed(KeyEvent.VK_DOWN))
 		{
-			//crouching (why is this hard for me)
+			player.crouch();
 		}
-			
+		
+		
 
 		player.act(obstacles);
 
 		if (!screenRect.intersects(player))
 			spawnNewPlayer();
 		
-		
+		//makes the spikes kill the player
 		for(int i = 0; i < spikes.size();i++)
 		{
 			if (spikes.get(i).intersects(player))
 				spawnNewPlayer();
 		}
+		
+		
+		
 		//CODE TO RANDOMIZE LEVEL
-		
-		
 		if((safe1.getSafe()).intersects(player))
 		{
 			if(!safe1.getIsStart())
 			{
-				level = new Level((int)(Math.random()*3)); 
+				int x = level.getLevelNumber();
+				while(x == level.getLevelNumber())
+				{
+					x = (int)(Math.random()*3);
+				}
+				level = new Level(x); 
 				obstacles = level.getLevels();
 				safe1.swap();
 				safe2.swap();

@@ -14,7 +14,7 @@ public class Player extends MovingImage {
 	
 	private static final long serialVersionUID = 1L;
 	public static final int PLAYER_WIDTH = 17;
-	private static int PLAYER_HEIGHT = 30;
+	public static final int PLAYER_HEIGHT = 30;
 
 	private double xVelocity, yVelocity;
 	private boolean onASurface;
@@ -84,11 +84,11 @@ public class Player extends MovingImage {
 	//crouching and uncrouching won't work yet
 	//need to delete current player object and spawn new in the same place?
 	public void crouch() {
-		PLAYER_HEIGHT = 15;
+		super.height = PLAYER_HEIGHT/2;
 	}
 	
 	public void uncrouch() {
-		PLAYER_HEIGHT = 30;
+		
 	}
 	
 	

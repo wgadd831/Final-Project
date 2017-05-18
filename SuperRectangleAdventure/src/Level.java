@@ -9,6 +9,7 @@ public class Level {
 	
 	private ArrayList<Shape> obstacles;
 	private ArrayList<Shape> spikes;
+	private int levelNumber;
 	
 	/**
 	 *  Creates an instance of the Level object 
@@ -18,6 +19,8 @@ public class Level {
 	{
 		//height: 600
 		//width: 800
+		
+		levelNumber = x;
 		
 		obstacles = new ArrayList<Shape>();
 		spikes = new ArrayList<Shape>();
@@ -69,6 +72,11 @@ public class Level {
 	public ArrayList<Shape> getSpikes()
 	{
 		return spikes;
+	}
+	
+	public int getLevelNumber()
+	{
+		return levelNumber;
 	}
 
 	
