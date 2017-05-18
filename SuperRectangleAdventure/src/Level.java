@@ -16,13 +16,27 @@ public class Level {
 	*/
 	public Level(int x)
 	{
+		//height: 600
+		//width: 800
+		
 		obstacles = new ArrayList<Shape>();
+		
+		//safeSquare borders
+		obstacles.add(new Rectangle(0,0,100,250));
+		obstacles.add(new Rectangle(0,350,100,250));
+		obstacles.add(new Rectangle(0,250,10,100));
+		
+		obstacles.add(new Rectangle(700,0,100,250));
+		obstacles.add(new Rectangle(700,350,100,250));
+		obstacles.add(new Rectangle(790,250,10,100));
+		
+		//screen borders(top and bottom)
+		obstacles.add(new Rectangle(100,0,600,10));
+		obstacles.add(new Rectangle(100,590,600,10));
 		
 		if(x == 1)
 		{
-			obstacles.add(new Rectangle(0,550,800,50));
-			obstacles.add(new Rectangle(0,0,50,800));
-			obstacles.add(new Rectangle(750,0,50,800));
+			
 		}
 		
 		if(x == 2)
