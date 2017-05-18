@@ -43,7 +43,16 @@ public class DrawingSurface extends PApplet {
 
 
 	public void spawnNewPlayer() {
-		player = new Player(assets.get(0), DRAWING_WIDTH/2-Player.PLAYER_WIDTH/2,50);
+		if(safe1.getIsStart())
+		{
+			player = new Player(assets.get(0), safe1.getX()+25, safe1.getY());
+		}
+		
+		if(safe2.getIsStart())
+		{
+			player = new Player(assets.get(0), safe2.getX()-25, safe2.getY());
+		}
+		
 	}
 	
 	public void runMe() {
@@ -67,7 +76,7 @@ public class DrawingSurface extends PApplet {
 
 		// drawing stuff
 
-		background(200,200,200);   
+		background(230,230,230);   
 
 		pushMatrix();
 
