@@ -19,6 +19,7 @@ public class DrawingSurface extends PApplet {
 	private SafeSquare safe2;
 	private Level level;
 	private ArrayList<Shape> obstacles;
+	private ArrayList<Shape> spikes;
 
 	private ArrayList<Integer> keys;
 	
@@ -36,6 +37,7 @@ public class DrawingSurface extends PApplet {
 		//once more levels are made, input random integer
 		level = new Level(1);
 		obstacles = level.getLevels();
+		spikes = level.getSpikes();
 		
 		
 		
@@ -93,6 +95,15 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 
+		
+		fill(250,0,0);
+		for (Shape s : spikes) {
+			if (s instanceof Rectangle) {
+				Rectangle r = (Rectangle)s;
+				rect(r.x,r.y,r.width,r.height);
+			}
+		}
+		
 		fill(250,250,0);
 		
 		rect(safe1.getX(), safe1.getY(), SafeSquare.SAFESQUARE_WIDTH, SafeSquare.SAFESQUARE_HEIGHT);
@@ -125,6 +136,12 @@ public class DrawingSurface extends PApplet {
 		if (!screenRect.intersects(player))
 			spawnNewPlayer();
 		
+		
+		for(int i = 0; i < spikes.size();i++)
+		{
+			if (spikes.get(i).intersects(player))
+				spawnNewPlayer();
+		}
 		//CODE TO RANDOMIZE LEVEL
 		
 		

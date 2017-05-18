@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Level {
 	
 	private ArrayList<Shape> obstacles;
-	private ArrayList<Spike> death;
+	private ArrayList<Shape> spikes;
 	
 	/**
 	 *  Creates an instance of the Level object 
@@ -20,6 +20,7 @@ public class Level {
 		//width: 800
 		
 		obstacles = new ArrayList<Shape>();
+		spikes = new ArrayList<Shape>();
 		
 		//safeSquare borders
 		obstacles.add(new Rectangle(0,0,100,250));
@@ -37,16 +38,19 @@ public class Level {
 		if(x == 0)
 		{
 			obstacles.add(new Rectangle(150,350,500,10));
+			spikes.add(new Spike(400,575));
 		}
 		
 		if(x == 1)
 		{
 			obstacles.add(new Rectangle(150,100,500,10));
+			spikes.add(new Spike(400,575));
 		}
 		
 		if(x == 2)
 		{
 			obstacles.add(new Rectangle(150,500,500,10));
+			spikes.add(new Spike(400,575));
 		}
 		
 		/*
@@ -60,6 +64,11 @@ public class Level {
 	public ArrayList<Shape> getLevels()
 	{
 		return obstacles;
+	}
+	
+	public ArrayList<Shape> getSpikes()
+	{
+		return spikes;
 	}
 
 	
