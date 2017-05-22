@@ -34,8 +34,7 @@ public class DrawingSurface extends PApplet {
 		safe1 = new SafeSquare(true,true);
 		safe2 = new SafeSquare(false,false);
 		
-		//once more levels are made, input random integer
-		level = new Level(1);
+		level = new Level(0);
 		obstacles = level.getLevels();
 		spikes = level.getSpikes();
 		
@@ -160,11 +159,12 @@ public class DrawingSurface extends PApplet {
 				int x;
 				do
 				{
-					x = (int)(Math.random()*3);
-				}while(x == level.getLevelNumber());
+					x = (int)(Math.random()*6);
+				}while(x == level.getLevelNumber() || x == 0);
 				
 				level = new Level(x); 
 				obstacles = level.getLevels();
+				spikes = level.getSpikes();
 				safe1.swap();
 				safe2.swap();
 			}
@@ -178,11 +178,12 @@ public class DrawingSurface extends PApplet {
 				int x;
 				do
 				{
-					x = (int)(Math.random()*3);
-				}while(x == level.getLevelNumber());
+					x = (int)(Math.random()*6);
+				}while(x == level.getLevelNumber() || x == 0);
 				
 				level = new Level(x); 
 				obstacles = level.getLevels();
+				spikes = level.getSpikes();
 				safe1.swap();
 				safe2.swap();
 			}

@@ -39,25 +39,111 @@ public class Level {
 		obstacles.add(new Rectangle(100,590,600,10));
 		
 		
-		//crouch tester
-		obstacles.add(new Rectangle(500,465,50,100));
 		
+		//level zero always plays first
+		//ensures that player knows how to crouch and wall jump
 		if(x == 0)
 		{
-			obstacles.add(new Rectangle(150,350,500,10));
-			spikes.add(new Spike(400,575));
+			obstacles.add(new Rectangle(100,0,150,250));
+			obstacles.add(new Rectangle(250,0,300,500));
+			obstacles.add(new Rectangle(550,0,150,250));
+			obstacles.add(new Rectangle(450,500,100,65));
+			
+			spikes.add(new Spike(350,575));
 		}
 		
 		if(x == 1)
 		{
-			obstacles.add(new Rectangle(150,100,500,10));
-			spikes.add(new Spike(400,575));
+			obstacles.add(new Rectangle(100,0,600,250));
+			obstacles.add(new Rectangle(100,350,600,250));
+			
+			spikes.add(new Spike(200,335));
+			spikes.add(new Spike(300,335));
+			spikes.add(new Spike(400,335));
+			spikes.add(new Spike(500,335));
+			spikes.add(new Spike(600,335));
+			
+			
 		}
 		
 		if(x == 2)
 		{
-			obstacles.add(new Rectangle(150,500,500,10));
-			spikes.add(new Spike(400,575));
+			obstacles.add(new Rectangle(100,0,100,250));
+			obstacles.add(new Rectangle(200,0,50,550));
+			obstacles.add(new Rectangle(350,100,100,500));
+			obstacles.add(new Rectangle(550,0,50,550));
+			obstacles.add(new Rectangle(600,0,100,250));
+			
+			spikes.add(new Spike(250,265));
+			spikes.add(new Spike(335,150));
+			spikes.add(new Spike(335,400));
+			spikes.add(new Spike(535,265));
+			spikes.add(new Spike(450,150));
+			spikes.add(new Spike(450,400));
+		}
+		
+		if(x == 3)
+		{
+			obstacles.add(new Rectangle(150,350,100,15));
+			obstacles.add(new Rectangle(300,100,15,200));
+			obstacles.add(new Rectangle(500,150,100,15));
+			obstacles.add(new Rectangle(575,300,50,15));
+			obstacles.add(new Rectangle(625,325,50,15));
+			
+			//spike floor
+			for(int x1 = 103; x1 <= 690; x1 += 20)
+			{
+				spikes.add(new Spike(x1,575));
+			}
+			
+			
+		}
+		
+		if(x == 4)
+		{
+			
+			obstacles.add(new Rectangle(200,150,10,300));
+			obstacles.add(new Rectangle(350,100,10,150));
+			obstacles.add(new Rectangle(450,250,10,150));
+			obstacles.add(new Rectangle(550,50,10,100));
+			obstacles.add(new Rectangle(550,350,10,150));
+			
+			//spike floor
+			for(int x1 = 103; x1 <= 690; x1 += 20)
+			{
+				spikes.add(new Spike(x1,575));
+			}
+			
+		}
+		
+		if(x == 5)
+		{
+			
+			obstacles.add(new Rectangle(100,0,600,50));
+			obstacles.add(new Rectangle(200,100,450,50));
+			obstacles.add(new Rectangle(200,150,50,250));
+			obstacles.add(new Rectangle(300,200,400,50));
+			obstacles.add(new Rectangle(550,250,50,250));
+			obstacles.add(new Rectangle(250,300,250,100));
+			obstacles.add(new Rectangle(100,350,100,50));
+			obstacles.add(new Rectangle(150,450,400,50));
+			obstacles.add(new Rectangle(100,550,600,50));
+			
+			spikes.add(new Spike(300,90));
+			spikes.add(new Spike(500,90));
+			spikes.add(new Spike(500,165));
+			spikes.add(new Spike(300,265));
+			spikes.add(new Spike(405,290));
+			spikes.add(new Spike(535,350));
+			spikes.add(new Spike(400,445));
+			spikes.add(new Spike(300,445));
+			spikes.add(new Spike(265,513));
+			spikes.add(new Spike(365,545));
+			spikes.add(new Spike(465,513));
+			spikes.add(new Spike(530,545));
+			
+			
+		
 		}
 		
 		/*
