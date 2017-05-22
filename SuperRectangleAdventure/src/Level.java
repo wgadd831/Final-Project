@@ -40,7 +40,7 @@ public class Level {
 		
 		
 		//crouch tester
-		obstacles.add(new Rectangle(500,555,50,10));
+		obstacles.add(new Rectangle(500,465,50,100));
 		
 		if(x == 0)
 		{

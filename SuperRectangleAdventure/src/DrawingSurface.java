@@ -122,7 +122,7 @@ public class DrawingSurface extends PApplet {
 			player.walk(-1);
 		if (isPressed(KeyEvent.VK_RIGHT))
 			player.walk(1);
-		if (isPressed(KeyEvent.VK_UP))
+		if (isPressed(KeyEvent.VK_SPACE))
 		{
 			player.jump();
 			player.wallJump();
@@ -131,7 +131,7 @@ public class DrawingSurface extends PApplet {
 		{
 			player.crouch();
 		}
-		if (isPressed(KeyEvent.VK_SPACE))
+		if (isPressed(KeyEvent.VK_UP))
 		{
 			player.uncrouch();
 		}

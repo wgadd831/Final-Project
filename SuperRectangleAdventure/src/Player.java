@@ -39,6 +39,7 @@ public class Player extends MovingImage {
 		onASurface = false;
 		leftSideOnWall = false;
 		rightSideOnWall = false;
+		canUncrouch = true;
 		gravity = .6;
 		friction = .8;
 		jumpStrength = 8;
@@ -94,8 +95,12 @@ public class Player extends MovingImage {
 	 *makes player uncrouch
 	 */
 	public void uncrouch() {
-		super.height = PLAYER_HEIGHT;
-		friction = .8;
+		if(canUncrouch)
+		{
+			super.height = PLAYER_HEIGHT;
+			friction = .8;
+		}
+		
 	}
 	
 	
@@ -107,16 +112,26 @@ public class Player extends MovingImage {
 		double yCoord = getY();
 		double width = getWidth();
 		double height = getHeight();
-
+		double yCoordStanding = getY() - 30;
 		// ***********Y AXIS***********
 
 		yVelocity += gravity; // GRAVITY
 		double yCoord2 = yCoord + yVelocity;
+		double yCoord2Standing = yCoordStanding + yVelocity;
 
 		Rectangle2D.Double strechY = new Rectangle2D.Double(xCoord,Math.min(yCoord,yCoord2),width,height+Math.abs(yVelocity));
+		Rectangle2D.Double strechYStanding = new Rectangle2D.Double(xCoord,Math.min(yCoordStanding,yCoord2Standing),width,PLAYER_HEIGHT+Math.abs(yVelocity));
 
 		onASurface = false;
+		canUncrouch = true;
 
+		for (Shape s : obstacles) {
+			
+			if (s.intersects(strechYStanding)) {
+				canUncrouch = false;
+			}
+		}
+		
 		if (yVelocity > 0) {
 			Shape standingSurface = null;
 			for (Shape s : obstacles) {
@@ -130,7 +145,9 @@ public class Player extends MovingImage {
 				Rectangle r = standingSurface.getBounds();
 				yCoord2 = r.getY()-height;
 			}
-		} else if (yVelocity < 0) {
+		} 
+		
+		else if (yVelocity < 0) {
 			Shape headSurface = null;
 			for (Shape s : obstacles) {
 				if (s.intersects(strechY)) {
