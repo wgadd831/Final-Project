@@ -9,29 +9,29 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class OptionPanel extends JPanel implements ActionListener {
+public class EndingPanel extends JPanel implements ActionListener {
 	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	Main w;
 	private BufferedImage img;
 	
-	public OptionPanel(Main w) {
+	public EndingPanel(Main w) {
 		this.w = w;
 		
 	
 
 
-		JButton startButton = new JButton();
-		startButton.setIcon(new ImageIcon("startbutton.png"));
-		startButton.addActionListener(this);
-		startButton.setBorderPainted(false);
-		startButton.setContentAreaFilled(false); 
-		startButton.setFocusPainted(false); 
-		startButton.setOpaque(false);
+		JButton restartButton = new JButton();
+		restartButton.setIcon(new ImageIcon("startbutton.png"));
+		restartButton.addActionListener(this);
+		restartButton.setBorderPainted(false);
+		restartButton.setContentAreaFilled(false); 
+		restartButton.setFocusPainted(false); 
+		restartButton.setOpaque(false);
 		setLayout(null);
-		startButton.setBounds(DRAWING_WIDTH- DRAWING_WIDTH/3, DRAWING_HEIGHT - DRAWING_HEIGHT/8 * 3, DRAWING_WIDTH/3, DRAWING_HEIGHT/8);
-		add(startButton);
+		restartButton.setBounds(DRAWING_WIDTH- DRAWING_WIDTH/3, DRAWING_HEIGHT - DRAWING_HEIGHT/8 * 3, DRAWING_WIDTH/3, DRAWING_HEIGHT/8);
+		add(restartButton);
 
 		
 		JButton exitButton = new JButton();
@@ -70,7 +70,7 @@ public class OptionPanel extends JPanel implements ActionListener {
 
 	    g2.setTransform(at);
 	    try {
-			img = ImageIO.read(new File("startPage.jpg"));
+			img = ImageIO.read(new File("endingPage.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

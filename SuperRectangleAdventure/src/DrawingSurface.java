@@ -2,8 +2,13 @@
 
 import java.awt.Rectangle;
 import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import javax.swing.Timer;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -18,12 +23,15 @@ public class DrawingSurface extends PApplet {
 	private SafeSquare safe1;
 	private SafeSquare safe2;
 	private Level level;
+	private ScoreCounter scores;
 	private ArrayList<Shape> obstacles;
 	private ArrayList<Shape> spikes;
 
 	private ArrayList<Integer> keys;
 	
 	private ArrayList<PImage> assets;
+	
+
 
 	public DrawingSurface() {
 		super();
@@ -34,14 +42,17 @@ public class DrawingSurface extends PApplet {
 		safe1 = new SafeSquare(true,true);
 		safe2 = new SafeSquare(false,false);
 		
-		level = new Level(0);
+		//once more levels are made, input random integer
+		level = new Level(1);
 		obstacles = level.getLevels();
 		spikes = level.getSpikes();
-		
+		scores = new ScoreCounter();
+
 		
 		
 	}
 
+	
 	/**
 	 * Spawns the player at whatever safe square is currently the start
 	*/
@@ -66,7 +77,7 @@ public class DrawingSurface extends PApplet {
 	// execute once when the program begins
 	public void setup() {
 		//size(0,0,PApplet.P3D);
-		assets.add(loadImage("Capture.PNG"));
+		assets.add(loadImage("uglyRectangle.png"));
 		
 		spawnNewPlayer();
 	}
@@ -88,6 +99,7 @@ public class DrawingSurface extends PApplet {
 
 		scale(ratioX, ratioY);
 
+		
 		fill(0);
 		for (Shape s : obstacles) {
 			if (s instanceof Rectangle) {
@@ -121,7 +133,7 @@ public class DrawingSurface extends PApplet {
 			player.walk(-1);
 		if (isPressed(KeyEvent.VK_RIGHT))
 			player.walk(1);
-		if (isPressed(KeyEvent.VK_SPACE))
+		if (isPressed(KeyEvent.VK_UP))
 		{
 			player.jump();
 			player.wallJump();
@@ -130,7 +142,7 @@ public class DrawingSurface extends PApplet {
 		{
 			player.crouch();
 		}
-		if (isPressed(KeyEvent.VK_UP))
+		if (isPressed(KeyEvent.VK_SPACE))
 		{
 			player.uncrouch();
 		}
@@ -159,14 +171,14 @@ public class DrawingSurface extends PApplet {
 				int x;
 				do
 				{
-					x = (int)(Math.random()*6);
-				}while(x == level.getLevelNumber() || x == 0);
+					x = (int)(Math.random()*3);
+				}while(x == level.getLevelNumber());
 				
 				level = new Level(x); 
 				obstacles = level.getLevels();
-				spikes = level.getSpikes();
 				safe1.swap();
 				safe2.swap();
+				scores.increaseScore(1);
 			}
 			
 		}
@@ -178,18 +190,20 @@ public class DrawingSurface extends PApplet {
 				int x;
 				do
 				{
-					x = (int)(Math.random()*6);
-				}while(x == level.getLevelNumber() || x == 0);
+					x = (int)(Math.random()*3);
+				}while(x == level.getLevelNumber());
 				
 				level = new Level(x); 
 				obstacles = level.getLevels();
-				spikes = level.getSpikes();
 				safe1.swap();
 				safe2.swap();
+				scores.increaseScore(1);
 			}
 		}
 		
-		
+		textSize(15);
+		text("Score : "+ scores.getScore(), 10, 20);
+		fill(0, 102, 153);
 		
 	}
 
