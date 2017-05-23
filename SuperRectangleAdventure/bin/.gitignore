@@ -1,15 +1,20 @@
 /DrawingSurface.class
+/EndingPanel$1.class
+/EndingPanel.class
 /Level.class
 /Main.class
 /MovingImage.class
+/OptionPanel$1.class
 /OptionPanel.class
 /Player.class
 /SafeSquare.class
-/Spike.class
-/OptionPanel$1.class
 /ScoreCounter.class
+<<<<<<< HEAD
 /EndingPanel$1.class
 /EndingPanel.class
 /Countdown.class
 /OptionPanel$2.class
 /InstructionPanel.class
+=======
+/Spike.class
+>>>>>>> branch 'master' of https://github.com/wgadd831/Final-Project.git

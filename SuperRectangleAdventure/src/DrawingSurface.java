@@ -211,7 +211,9 @@ public class DrawingSurface extends PApplet {
 				do
 				{
 					x = (int)(Math.random()*6);
-					}while(x == level.getLevelNumber() || x == 0);
+
+				}while(x == level.getLevelNumber() || x == 0);
+
 				
 				level = new Level(x); 
 				obstacles = level.getLevels();
