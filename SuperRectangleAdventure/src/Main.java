@@ -16,14 +16,18 @@ public class Main {
 	private InstructionPanel panel2;
 	private DrawingSurface panel3;
 	private EndingPanel panel4;
+	private DrawingSurface panel5;
     private int score;
+
 
 	
 	private PSurfaceAWT.SmoothCanvas processingCanvas;
+
 	
 	public Main() {
 		panel3 = new DrawingSurface(this);
 		panel3.runMe();
+
 		
 		PSurfaceAWT surf = (PSurfaceAWT) panel3.getSurface();
 		processingCanvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
@@ -53,8 +57,12 @@ public class Main {
 	    
 	    window.add(cardPanel);
 	    window.revalidate();
+	    
+
 	}
 	
+
+
 	public int getScore(){
 		return score;
 	}
@@ -63,7 +71,6 @@ public class Main {
 		this.score = score;
 	}
 	
-
 	
 
 	public static void main(String[] args)
@@ -71,14 +78,12 @@ public class Main {
 		Main m = new Main();
 	}
   
-	public void changePanel() {
-		((CardLayout)cardPanel.getLayout()).next(cardPanel);
+
+	public void changePanel(String name) {
+		((CardLayout)cardPanel.getLayout()).show(cardPanel,name);
 		processingCanvas.requestFocus();
 	}
 	
-	public void callPanel() {
-		((CardLayout)cardPanel.getLayout()).previous(cardPanel);
-		processingCanvas.requestFocus();
-	}
+
   
 }

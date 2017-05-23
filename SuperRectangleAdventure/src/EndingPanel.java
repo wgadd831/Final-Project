@@ -8,21 +8,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * Ending Screen of Game
+ *
+ */
 public class EndingPanel extends JPanel implements ActionListener {
 	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	Main w;
 	private BufferedImage img;
-	private JButton restartButton;
+
 	private JButton exitButton;
 
-	
+
+
+/** Creates an instance of the EndingPanel object 
+ * 
+ * @param w is a Main
+ */
 	public EndingPanel(Main w) {
 		this.w = w;
-		restartButton = new JButton();
+	
 		exitButton = new JButton();
+
+
 
 	}
 	
@@ -45,7 +55,7 @@ public class EndingPanel extends JPanel implements ActionListener {
 
 	    g2.setTransform(at);
 	    try {
-			img = ImageIO.read(new File("endingPage.jpg"));
+			img = ImageIO.read(new File("endingPage.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,27 +71,12 @@ public class EndingPanel extends JPanel implements ActionListener {
 	    add(s);
 	    
 	    
-		restartButton.setIcon(new ImageIcon("restartbutton.png"));
-		restartButton.addActionListener(this);
-		restartButton.setBorderPainted(false);
-		restartButton.setContentAreaFilled(false); 
-		restartButton.setFocusPainted(false); 
-		restartButton.setOpaque(false);
-		setLayout(null);
-		restartButton.setBounds(getWidth()/3, getHeight() - getHeight()/8 * 2, getWidth()/3, getHeight()/8 + getWidth()/6);
-		add(restartButton);
 
 
 		exitButton.setIcon(new ImageIcon("exitbuttonforending.png"));
-		/*exitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});*/
-		
 		exitButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				System.exit(4);
 			}
 		});
 		exitButton.setBorderPainted(false);
@@ -96,9 +91,17 @@ public class EndingPanel extends JPanel implements ActionListener {
 
 
 	  }
-	
+
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
-		w.callPanel();
+		// TODO Auto-generated method stub
+		
 	}
+	
+
+
+
+
 	
 }

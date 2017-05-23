@@ -8,17 +8,25 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * Instruction Screen of game
+ */
 public class InstructionPanel extends JPanel implements ActionListener {
 	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	Main w;
 	private BufferedImage img;
+	private JButton startButton;
 
+	
+	/** Creates an instance of the InstructionPanel object 
+	 * 
+	 * @param w is a Main
+	 */
 	public InstructionPanel(Main w) {
 		this.w = w;
-
+		startButton = new JButton();
 		
 	}
 	
@@ -41,7 +49,7 @@ public class InstructionPanel extends JPanel implements ActionListener {
 
 	    g2.setTransform(at);
 	    try {
-			img = ImageIO.read(new File("instructionPage.jpg"));
+			img = ImageIO.read(new File("instructionPage.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,7 +59,7 @@ public class InstructionPanel extends JPanel implements ActionListener {
 	    
 	    
 	    
-	    JButton startButton = new JButton();
+
 		startButton.setIcon(new ImageIcon("startbutton.png"));
 		startButton.addActionListener(this);
 		startButton.setBorderPainted(false);
@@ -64,11 +72,14 @@ public class InstructionPanel extends JPanel implements ActionListener {
 
 		
 		validate();
+		
+		
+		
 
 	  }
 	
 	public void actionPerformed(ActionEvent e) {
-		w.changePanel();
+		w.changePanel("3");
 	}
 	
 }

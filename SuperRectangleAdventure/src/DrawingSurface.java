@@ -2,12 +2,11 @@
 
 import java.awt.Rectangle;
 import java.awt.Shape;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import javax.swing.Timer;
+
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -36,6 +35,8 @@ public class DrawingSurface extends PApplet {
 	private Countdown time;
 	
 	private boolean ignore;
+	
+
 
 
 
@@ -56,18 +57,11 @@ public class DrawingSurface extends PApplet {
 		spikes = level.getSpikes();
 		scores = new ScoreCounter();
 		time = new Countdown();
-		
 
-		time.startTimer(10);
-
-
-		
-
-		
-		
+		time.startTimer(50);
 	}
 
-	
+
 	/**
 	 * Spawns the player at whatever safe square is currently the start
 	*/
@@ -100,10 +94,8 @@ public class DrawingSurface extends PApplet {
 		spawnNewPlayer();
 	}
 
-	// The statements in draw() are executed until the 
-	// program is stopped. Each statement is executed in 
-	// sequence and after the last line is read, the first 
-	// line is executed again.
+
+
 	public void draw() {
 
 		// drawing stuff
@@ -198,7 +190,7 @@ public class DrawingSurface extends PApplet {
 				safe1.swap();
 				safe2.swap();
 				scores.increaseScore(1);
-				time.increaseTime(3);
+				time.increaseTime(10);
 			}
 			
 		}
@@ -221,7 +213,7 @@ public class DrawingSurface extends PApplet {
 				safe1.swap();
 				safe2.swap();
 				scores.increaseScore(1);
-				time.increaseTime(3);
+				time.increaseTime(10);
 			}
 		}
 		
@@ -237,11 +229,13 @@ public class DrawingSurface extends PApplet {
 		if (time.getTime() == 0 && !ignore) {
 			ignore = true;
 			w.setScore(scores.getScore());
-			w.changePanel();
-			time = new Countdown();
-			time.startTimer(10);
+			w.changePanel("4");
 			scores.setScore(0);
+
 		}
+		
+		
+		
 		
 	}
 	

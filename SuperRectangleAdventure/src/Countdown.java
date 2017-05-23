@@ -1,19 +1,28 @@
-
+/**
+ * The timer that runs in the game
+ */
 public class Countdown {
 	
 
 	    public int time;
 	    long startTime;
 	    
-	    int levelTime;
-	    int lastReturnedTime = 0;
+	    public int levelTime;
+	    public int lastReturnedTime = 0;
 	    
+	    
+	    /**
+	     * Creates an instance of the Countdown object 
+	     */
 	    public Countdown() {
 	    	
 
 	    }
 	    
-	    
+	    /**Start Timer
+	     * 
+	     * @param time is number of seconds
+	     */
 	    public void startTimer(int time) {
 	    	
 	    	levelTime = time;
@@ -30,6 +39,11 @@ public class Countdown {
 	    
 	    }
 	    
+	    
+	    /** Return current time
+	     * 
+	     * @return current time
+	     */
 	    public int getTime() {
 	    	
 	    
@@ -43,11 +57,15 @@ public class Countdown {
 	    	}
 	    }
 	    
-	    
+	    /** increase time
+	     * 
+	     * @param add is amount of increase on time
+	     */
 	    public void increaseTime(int add) {
 	    	
 	    	levelTime += add;
 	    }
+	    
 
 
 }
