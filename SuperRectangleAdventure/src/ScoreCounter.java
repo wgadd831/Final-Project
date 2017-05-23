@@ -30,4 +30,7 @@ public class ScoreCounter {
 		
 	}
 
+	public void setScore(int i) {
+		score = i;
+	}
 }

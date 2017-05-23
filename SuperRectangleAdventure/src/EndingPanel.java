@@ -73,7 +73,13 @@ public class EndingPanel extends JPanel implements ActionListener {
 
 
 		exitButton.setIcon(new ImageIcon("exitbuttonforending.png"));
-		exitButton.addActionListener(new ActionListener() {
+		/*exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});*/
+		
+		exitButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}

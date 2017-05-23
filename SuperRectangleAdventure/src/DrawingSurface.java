@@ -236,6 +236,9 @@ public class DrawingSurface extends PApplet {
 			ignore = true;
 			w.setScore(scores.getScore());
 			w.changePanel();
+			time = new Countdown();
+			time.startTimer(10);
+			scores.setScore(0);
 		}
 		
 	}
