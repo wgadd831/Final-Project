@@ -15,40 +15,15 @@ public class EndingPanel extends JPanel implements ActionListener {
 	public static final int DRAWING_HEIGHT = 600;
 	Main w;
 	private BufferedImage img;
+	private JButton restartButton;
+	private JButton exitButton;
+
 	
 	public EndingPanel(Main w) {
 		this.w = w;
-		
-	
+		restartButton = new JButton();
+		exitButton = new JButton();
 
-
-		JButton restartButton = new JButton();
-		restartButton.setIcon(new ImageIcon("startbutton.png"));
-		restartButton.addActionListener(this);
-		restartButton.setBorderPainted(false);
-		restartButton.setContentAreaFilled(false); 
-		restartButton.setFocusPainted(false); 
-		restartButton.setOpaque(false);
-		setLayout(null);
-		restartButton.setBounds(DRAWING_WIDTH- DRAWING_WIDTH/3, DRAWING_HEIGHT - DRAWING_HEIGHT/8 * 3, DRAWING_WIDTH/3, DRAWING_HEIGHT/8);
-		add(restartButton);
-
-		
-		JButton exitButton = new JButton();
-		exitButton.setIcon(new ImageIcon("exitbutton.png"));
-		exitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		exitButton.setBorderPainted(false);
-		exitButton.setContentAreaFilled(false); 
-		exitButton.setFocusPainted(false); 
-		exitButton.setOpaque(false);
-		exitButton.setBounds(DRAWING_WIDTH- DRAWING_WIDTH/3, DRAWING_HEIGHT - DRAWING_HEIGHT/8 * 2, DRAWING_WIDTH/3, DRAWING_HEIGHT/8);
-		add(exitButton);
-		
-		validate();
 	}
 	
 	
@@ -77,12 +52,47 @@ public class EndingPanel extends JPanel implements ActionListener {
 		}
 	    
 	    g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+	    
+	    JLabel s = new JLabel("" + w.getScore());
+	    setLayout(null);
+	    s.setFont(new Font("Serif", Font.BOLD, getHeight()/5));
+	    s.setBounds(getWidth()/2, getHeight()/2, getWidth()/5, getHeight()/5);
+	    s.setForeground(Color.WHITE);
+	    add(s);
+	    
+	    
+		restartButton.setIcon(new ImageIcon("restartbutton.png"));
+		restartButton.addActionListener(this);
+		restartButton.setBorderPainted(false);
+		restartButton.setContentAreaFilled(false); 
+		restartButton.setFocusPainted(false); 
+		restartButton.setOpaque(false);
+		setLayout(null);
+		restartButton.setBounds(getWidth()/3, getHeight() - getHeight()/8 * 2, getWidth()/3, getHeight()/8 + getWidth()/6);
+		add(restartButton);
+
+
+		exitButton.setIcon(new ImageIcon("exitbuttonforending.png"));
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		exitButton.setBorderPainted(false);
+		exitButton.setContentAreaFilled(false); 
+		exitButton.setFocusPainted(false); 
+		exitButton.setOpaque(false);
+		exitButton.setBounds(getWidth()/3, getHeight() - getHeight()/8 * 3, getWidth()/3, getHeight()/8 + getWidth()/6);
+		add(exitButton);
+		
+		validate();
+	    
 
 
 	  }
 	
 	public void actionPerformed(ActionEvent e) {
-		w.changePanel();
+		w.callPanel();
 	}
 	
 }

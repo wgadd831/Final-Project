@@ -19,6 +19,7 @@ public class DrawingSurface extends PApplet {
 
 	private Rectangle screenRect;
 
+	Main w;
 	private Player player;
 	private SafeSquare safe1;
 	private SafeSquare safe2;
@@ -31,10 +32,17 @@ public class DrawingSurface extends PApplet {
 	
 	private ArrayList<PImage> assets;
 	
+	
+	private Countdown time;
+	
+	private boolean ignore;
 
 
-	public DrawingSurface() {
+
+	public DrawingSurface(Main w) {
 		super();
+		
+		this.w = w;
 		assets = new ArrayList<PImage>();
 		keys = new ArrayList<Integer>();
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -43,10 +51,17 @@ public class DrawingSurface extends PApplet {
 		safe2 = new SafeSquare(false,false);
 		
 		//once more levels are made, input random integer
-		level = new Level(1);
+		level = new Level(0);
 		obstacles = level.getLevels();
 		spikes = level.getSpikes();
 		scores = new ScoreCounter();
+		time = new Countdown();
+		
+
+		time.startTimer(10);
+
+
+		
 
 		
 		
@@ -60,16 +75,19 @@ public class DrawingSurface extends PApplet {
 		if(safe1.getIsStart())
 		{
 			player = new Player(assets.get(0), safe1.getX()+25, safe1.getY());
+
 		}
 		
 		if(safe2.getIsStart())
 		{
 			player = new Player(assets.get(0), safe2.getX()-25, safe2.getY());
+
 		}
 		
 	}
 	
 	public void runMe() {
+		
 		runSketch();
 	}
 
@@ -133,7 +151,7 @@ public class DrawingSurface extends PApplet {
 			player.walk(-1);
 		if (isPressed(KeyEvent.VK_RIGHT))
 			player.walk(1);
-		if (isPressed(KeyEvent.VK_UP))
+		if (isPressed(KeyEvent.VK_SPACE))
 		{
 			player.jump();
 			player.wallJump();
@@ -142,7 +160,7 @@ public class DrawingSurface extends PApplet {
 		{
 			player.crouch();
 		}
-		if (isPressed(KeyEvent.VK_SPACE))
+		if (isPressed(KeyEvent.VK_UP))
 		{
 			player.uncrouch();
 		}
@@ -171,14 +189,16 @@ public class DrawingSurface extends PApplet {
 				int x;
 				do
 				{
-					x = (int)(Math.random()*3);
-				}while(x == level.getLevelNumber());
+					x = (int)(Math.random()*5);
+				}while(x == level.getLevelNumber() || x == 0);
 				
 				level = new Level(x); 
 				obstacles = level.getLevels();
+				spikes = level.getSpikes();
 				safe1.swap();
 				safe2.swap();
 				scores.increaseScore(1);
+				time.increaseTime(3);
 			}
 			
 		}
@@ -190,14 +210,16 @@ public class DrawingSurface extends PApplet {
 				int x;
 				do
 				{
-					x = (int)(Math.random()*3);
-				}while(x == level.getLevelNumber());
+					x = (int)(Math.random()*6);
+					}while(x == level.getLevelNumber() || x == 0);
 				
 				level = new Level(x); 
 				obstacles = level.getLevels();
+				spikes = level.getSpikes();
 				safe1.swap();
 				safe2.swap();
 				scores.increaseScore(1);
+				time.increaseTime(3);
 			}
 		}
 		
@@ -205,11 +227,27 @@ public class DrawingSurface extends PApplet {
 		text("Score : "+ scores.getScore(), 10, 20);
 		fill(0, 102, 153);
 		
+		
+		textSize(15);
+		text("Time : " + time.getTime(), 10, 35);
+		fill(0, 102, 153);
+		
+		if (time.getTime() == 0 && !ignore) {
+			ignore = true;
+			w.setScore(scores.getScore());
+			w.changePanel();
+		}
+		
+	}
+	
+	public int returnScore(){
+		return scores.getScore();
 	}
 
 
 	public void keyPressed() {
 		keys.add(keyCode);
+		
 	}
 
 	public void keyReleased() {

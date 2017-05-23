@@ -12,16 +12,20 @@ public class Main {
 	
 	private JPanel cardPanel;
 	
-	private OptionPanel panel1;    
-	private DrawingSurface panel2;
+	private OptionPanel panel1; 
+	private InstructionPanel panel2;
+	private DrawingSurface panel3;
+	private EndingPanel panel4;
+    private int score;
+
 	
 	private PSurfaceAWT.SmoothCanvas processingCanvas;
 	
 	public Main() {
-		panel2 = new DrawingSurface();
-		panel2.runMe();
+		panel3 = new DrawingSurface(this);
+		panel3.runMe();
 		
-		PSurfaceAWT surf = (PSurfaceAWT) panel2.getSurface();
+		PSurfaceAWT surf = (PSurfaceAWT) panel3.getSurface();
 		processingCanvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		window = (JFrame)processingCanvas.getFrame();
 
@@ -37,16 +41,29 @@ public class Main {
 	    window.getContentPane().removeAll();
 	    
 		panel1 = new OptionPanel(this);    
-	    panel2 = new DrawingSurface();
+		panel2 = new InstructionPanel(this);
+	    panel4 = new EndingPanel(this);
 	    
 	    cardPanel.add(panel1,"1");
-	    cardPanel.add(processingCanvas,"2");
+	    cardPanel.add(panel2, "2");
+	    cardPanel.add(processingCanvas,"3");
+	    cardPanel.add(panel4, "4");
 	    
 	    window.setLayout(new BorderLayout());
 	    
 	    window.add(cardPanel);
 	    window.revalidate();
 	}
+	
+	public int getScore(){
+		return score;
+	}
+	
+	public void setScore(int score){
+		this.score = score;
+	}
+	
+
 	
 
 	public static void main(String[] args)
@@ -56,6 +73,11 @@ public class Main {
   
 	public void changePanel() {
 		((CardLayout)cardPanel.getLayout()).next(cardPanel);
+		processingCanvas.requestFocus();
+	}
+	
+	public void callPanel() {
+		((CardLayout)cardPanel.getLayout()).previous(cardPanel);
 		processingCanvas.requestFocus();
 	}
   

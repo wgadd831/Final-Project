@@ -9,15 +9,14 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class OptionPanel extends JPanel implements ActionListener {
+public class InstructionPanel extends JPanel implements ActionListener {
 	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	Main w;
 	private BufferedImage img;
 
-
-	public OptionPanel(Main w) {
+	public InstructionPanel(Main w) {
 		this.w = w;
 
 		
@@ -42,7 +41,7 @@ public class OptionPanel extends JPanel implements ActionListener {
 
 	    g2.setTransform(at);
 	    try {
-			img = ImageIO.read(new File("startPage.jpg"));
+			img = ImageIO.read(new File("instructionPage.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,25 +59,9 @@ public class OptionPanel extends JPanel implements ActionListener {
 		startButton.setFocusPainted(false); 
 		startButton.setOpaque(false);
 		setLayout(null);
-		startButton.setBounds(getWidth()- getWidth()/3, getHeight() - getHeight()/8 * 3, getWidth()/3, getHeight()/8);
+		startButton.setBounds(getWidth()- getWidth()/3, getHeight() - getHeight()/8 * 3, getWidth()/3, getHeight()/8 + getWidth()/6);
 		add(startButton);
 
-
-
-		
-		JButton exitButton = new JButton();
-		exitButton.setIcon(new ImageIcon("exitbutton.png"));
-		exitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		exitButton.setBorderPainted(false);
-		exitButton.setContentAreaFilled(false); 
-		exitButton.setFocusPainted(false); 
-		exitButton.setOpaque(false);
-		exitButton.setBounds(getWidth()- getWidth()/3, getHeight() - getHeight()/8 * 2, getWidth()/3, getHeight()/8);
-		add(exitButton);
 		
 		validate();
 
