@@ -181,7 +181,7 @@ public class DrawingSurface extends PApplet {
 				int x;
 				do
 				{
-					x = (int)(Math.random()*5);
+					x = (int)(Math.random()*6);
 				}while(x == level.getLevelNumber() || x == 0);
 				
 				level = new Level(x); 
